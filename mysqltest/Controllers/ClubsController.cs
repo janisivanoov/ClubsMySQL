@@ -31,7 +31,7 @@ namespace ClubsCore.Controllers
 
             bool applyingFilter = true;
 
-            if (false == applyingFilter) //using bool for filter
+            if (true == applyingFilter) //using bool for filter
             {
                 var filterForStudents = _context.Clubs
                                                 .Where(n => n.Name == Name) //all clubs with entered name
