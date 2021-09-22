@@ -29,21 +29,20 @@ namespace ClubsCore.Controllers
             var clubsQuery = _context.Clubs
                                      .OrderBy(c => c.Id); //ordering all clubs by Id
 
-            bool applyFilter = true;
+            bool applyingFilter = true;
 
-            if (applyFilter == true) //using bool for filter
+            if (false == applyingFilter) //using bool for filter
             {
-                var filterForClubs = _context.Clubs
-                                     .Where(n => n.Name == Name) //all Clubs with name "Sport"
-                                     .ToList(); //sent to list
-
-                if (filterForClubs == null)
+                var filterForStudents = _context.Clubs
+                                                .Where(n => n.Name == Name) //all clubs with entered name
+                                                .ToList(); //sent to list
+                if (filterForStudents == null)
                     return NotFound();
             }
 
-            var clubs = Paginate<ClubListingDTO>(clubsQuery, queryparameters); //using Paginate
+            var students = Paginate<ClubDTO>(clubsQuery, queryparameters); //using Paginate
 
-            return Ok(clubs);
+            return Ok(students);
         }
 
         /// <summary>
